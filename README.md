@@ -1,6 +1,6 @@
 <div align="center">
   <img src="public/favicon.svg" alt="UrbanFix Logo" width="120" />
-  <h1>UrbanFix Local Connect</h1>
+  <h1>UrbanFix</h1>
   <p>
     <em>A modern, trusted platform for booking vetted home service professionals like electricians, plumbers, cleaners, and salon experts.</em>
   </p>
