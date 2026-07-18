@@ -9,16 +9,16 @@ This project uses a separated architecture:
 ## 🏗️ Architecture overview
 
 **Frontend (Client)**: 
-- Continues to use `@supabase/supabase-js` to communicate directly with Supabase for standard CRUD operations (categories, providers, bookings, profiles, reviews). 
-- Row-Level Security (RLS) is preserved and enforced by Supabase.
+- Provides a responsive and interactive user interface for browsing services and managing bookings.
+- Communicates securely with the Spring Boot backend using JWT-based authentication.
 
 **Backend (Server)**:
-- A Spring Boot application (Strategy B - Backend for Backend Concerns).
+- A Spring Boot application connected to a MySQL database.
 - Handles all server-side operations that require a trusted environment:
-  - **Stripe Checkout & Refunds**: Uses Stripe Java SDK and secret keys.
-  - **Stripe Webhooks**: Listens for Stripe events to update booking payment statuses.
+  - **Authentication**: Custom JWT-based auth system for user and provider accounts.
+  - **Razorpay Integration**: Handles secure checkout, payments, and payment verification via Razorpay.
   - **Pricing Computation**: Server-side calculation of platform fees and GST.
-  - **Admin Operations**: Validates admin roles and allows overriding RLS constraints.
+  - **Admin Operations**: Validates admin roles and manages data integrity.
 
 ## 🚀 Getting Started
 
@@ -26,8 +26,8 @@ This project uses a separated architecture:
 
 1. Node.js (for frontend)
 2. Java 21+ and Maven 3.9+ (for backend)
-3. Supabase Project (database and auth)
-4. Stripe Account (sandbox/live keys)
+3. MySQL Database
+4. Razorpay Account (for payment gateway keys)
 
 ### Running the Frontend
 
@@ -55,21 +55,20 @@ The backend server runs locally on port 8080.
 Create an `application-dev.properties` file in `backend/src/main/resources` (or set environment variables) with your secrets:
 
 ```properties
-SUPABASE_DB_URL=jdbc:postgresql://aws-0-[REGION].pooler.supabase.com:6543/postgres
-SUPABASE_DB_USERNAME=postgres.[PROJECT_REF]
-SUPABASE_DB_PASSWORD=your-db-password
-SUPABASE_JWT_SECRET=your-supabase-jwt-secret
+spring.datasource.url=jdbc:mysql://localhost:3306/urbanfix
+spring.datasource.username=root
+spring.datasource.password=your-mysql-password
 
-STRIPE_SANDBOX_API_KEY=sk_test_...
-STRIPE_LIVE_API_KEY=sk_live_...
-PAYMENTS_SANDBOX_WEBHOOK_SECRET=whsec_...
-PAYMENTS_LIVE_WEBHOOK_SECRET=whsec_...
+jwt.secret=your-jwt-secret-key-that-is-at-least-256-bits
+
+razorpay.key.id=rzp_test_...
+razorpay.key.secret=your-razorpay-secret
 ```
 
 ### Frontend Configuration
 
-Ensure you have a `.env` file at the project root with the necessary Supabase and VITE prefixed public keys required by the application.
+Ensure you have a `.env` file at the project root with the necessary API URLs and public keys required by the application (e.g., your Razorpay public key ID).
 
 ## 🔌 Frontend Integration
 
-The frontend seamlessly integrates with the Spring Boot backend (`http://localhost:8080`) for operations like Stripe checkout and booking cancellations (e.g. in `src/lib/booking.functions.ts`). All requests to the backend include the user's Supabase JWT in the `Authorization: Bearer <token>` header to maintain strict authentication.
+The frontend seamlessly integrates with the Spring Boot backend (`http://localhost:8080`) for operations like Razorpay checkout, fetching service categories, and managing user profiles. All protected requests to the backend include the user's JWT in the `Authorization: Bearer <token>` header to maintain strict authentication.
