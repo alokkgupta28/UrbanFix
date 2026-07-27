@@ -221,7 +221,7 @@ function ProfileForm({ userId, profile }: { userId: string; profile: Profile | n
   const mutation = useMutation({
     mutationFn: async (values: ProfileForm) => {
       const payload = {
-        full_name: values.full_name,
+        fullName: values.full_name,
         phone: values.phone,
         city: values.city || null,
       };
