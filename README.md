@@ -1,125 +1,423 @@
 <div align="center">
-  <img src="public/favicon.svg" alt="UrbanFix Logo" width="120" />
-  <h1>UrbanFix</h1>
-  <p>
-    <em>A modern, trusted platform for booking vetted home service professionals like electricians, plumbers, cleaners, and salon experts.</em>
-  </p>
-  <p>
-    <img src="https://img.shields.io/badge/Frontend-React%2019-61DAFB?logo=react&logoColor=black" alt="React" />
-    <img src="https://img.shields.io/badge/Backend-Spring%20Boot%203.4-6DB33F?logo=spring&logoColor=white" alt="Spring Boot" />
-    <img src="https://img.shields.io/badge/Database-MySQL-4479A1?logo=mysql&logoColor=white" alt="MySQL" />
-    <img src="https://img.shields.io/badge/Payments-Razorpay-02042B?logo=razorpay&logoColor=white" alt="Razorpay" />
-  </p>
+
+<img src="public/favicon.svg" width="120" alt="UrbanFix Logo"/>
+
+# UrbanFix
+
+### Professional Home Service Booking Platform
+
+Book trusted electricians, plumbers, AC technicians, cleaners, carpenters, painters, salon experts and more with secure online payments, real-time booking management and role-based dashboards.
+
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4-6DB33F?logo=springboot&logoColor=white)
+![Java](https://img.shields.io/badge/Java-17-orange?logo=openjdk)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-4169E1?logo=postgresql)
+![JWT](https://img.shields.io/badge/Auth-JWT-black)
+![Razorpay](https://img.shields.io/badge/Payments-Razorpay-02042B?logo=razorpay)
+![Vercel](https://img.shields.io/badge/Frontend-Vercel-black?logo=vercel)
+![Render](https://img.shields.io/badge/Backend-Render-46E3B7?logo=render)
+
 </div>
 
-<hr />
+---
 
-## 📖 Table of Contents
-- [About the Project](#-about-the-project)
-- [Features](#-features)
-- [Architecture & Tech Stack](#-architecture--tech-stack)
-- [Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Backend Setup](#backend-setup)
-  - [Frontend Setup](#frontend-setup)
-- [API & Integration](#-api--integration)
-- [Contributing](#-contributing)
-- [License](#-license)
+# Live Demo
 
-## 🌟 About the Project
-UrbanFix bridges the gap between skilled home service professionals and customers needing reliable home maintenance. Built with a highly scalable, decoupled architecture, the platform guarantees a seamless booking experience and stringent security via robust server-side payment verification and custom role-based access.
+### Frontend
 
-## ✨ Features
-- **Role-Based Access**: Specialized views and administrative capabilities for Customers, Providers, and Admins.
-- **Service Categories**: Browse various home maintenance and repair services with transparent, upfront pricing.
-- **Booking & Scheduling**: Frictionless scheduling workflows for securing appointments.
-- **Secure Payments**: Complete integration with Razorpay for rapid checkouts, seamless payments, and robust transaction verification.
-- **Reviews & Ratings**: Verified customer reviews that maintain high quality and trust standards for service providers.
-- **Admin Dashboard**: Comprehensive moderation tools, platform configuration, and dispute management interface.
+https://your-vercel-domain.vercel.app
 
-## 🏗️ Architecture & Tech Stack
+### Backend API
 
-### Frontend (Client)
-- **Framework**: React 19, TanStack Start, and Vite.
-- **Styling**: Tailwind CSS configured with `shadcn/ui` components built on Radix UI primitives.
-- **State & Data Fetching**: TanStack React Query and Axios.
-- **Authentication**: JWT-based auth via React Context API, persisting secure tokens in Local Storage.
-- **Payments**: Razorpay Checkout SDK operating through a client-side modal.
+https://urbanfix-9il0.onrender.com
 
-### Backend (Server)
-- **Framework**: Spring Boot 3.4 (Java 17).
-- **Database**: MySQL managed via Spring Data JPA and Hibernate.
-- **Authentication**: Spring Security with JJWT for stateless token generation and robust validation.
-- **Payments**: Razorpay Java SDK for order creation and secure server-side cryptographic signature verification.
-- **Storage**: Highly optimized local file storage service for handling user and provider image uploads.
+---
 
-## 🚀 Getting Started
+# Overview
 
-Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+UrbanFix is a modern full-stack service marketplace inspired by platforms like Urban Company.
 
-### Prerequisites
-- **Node.js** (v18 or higher)
-- **Java 17+** and **Maven 3.9+**
-- **MySQL Server** (running locally or remotely)
-- **Razorpay Account** (Sandbox/Test mode API keys required)
+Customers can easily discover trusted professionals, book services, make secure online payments, leave reviews and manage bookings.
 
-### Backend Setup
+Service providers manage bookings through a dedicated provider dashboard, while administrators manage users, providers, bookings and platform content through an admin panel.
 
-1. Navigate to the `backend` directory:
-   ```bash
-   cd backend
-   ```
-2. Create a MySQL database named `urbanfix`.
-3. Configure your environment variables in `src/main/resources/application.properties` (or export them in your terminal):
-   ```properties
-   spring.datasource.url=jdbc:mysql://localhost:3306/urbanfix?createDatabaseIfNotExist=true
-   spring.datasource.username=root
-   spring.datasource.password=your-mysql-password
+The application follows a scalable client-server architecture using Spring Boot REST APIs and a React frontend.
 
-   # Generate a strong, random 256-bit key for JWT signing
-   jwt.secret=your-jwt-secret-key-that-is-at-least-256-bits
+---
 
-   # Your Razorpay Test Keys
-   razorpay.key-id=rzp_test_...
-   razorpay.key-secret=your-razorpay-secret
+# Features
 
-   # Directory for file uploads (created automatically)
-   app.upload.dir=uploads
-   ```
-4. Build and run the Spring Boot application:
-   ```bash
-   mvn clean package -DskipTests
-   mvn spring-boot:run
-   ```
-   *The backend API will start on `http://localhost:8080`.*
+## Customer
 
-### Frontend Setup
+- User Registration & Login
+- JWT Authentication
+- Browse Categories
+- Search Services
+- View Provider Profiles
+- Book Services
+- Online Razorpay Payments
+- Booking History
+- Profile Management
+- Reviews & Ratings
 
-1. Open a new terminal and navigate to the project root:
-   ```bash
-   cd ..
-   ```
-2. Create a `.env` file at the root to configure the API and Razorpay variables:
-   ```env
-   VITE_API_URL=http://localhost:8080/api
-   VITE_RAZORPAY_KEY_ID=rzp_test_...
-   ```
-3. Install dependencies and start the Vite development server:
-   ```bash
-   npm install
-   npm run dev
-   ```
-   *The client application will be available at `http://localhost:5173`.*
+---
 
-## 🔌 API & Integration
+## Provider
 
-The frontend operates entirely autonomously from the data layer, strictly relying on the Spring Boot REST API for all data requirements (`http://localhost:8080/api`). 
+- Provider Login
+- Provider Dashboard
+- View Assigned Bookings
+- Update Booking Status
+- Manage Profile
+- View Customer Reviews
 
-- **Protected Routes**: All secured requests dynamically append the user's JWT into the `Authorization: Bearer <token>` header, handled globally via Axios interceptors in `src/lib/api.ts`.
-- **Payment Flow**: When a booking is finalized, the backend explicitly creates a Razorpay Order ID. The frontend utilizes this Order ID to open the native Razorpay Checkout modal. Upon a successful charge, the frontend securely dispatches the Razorpay signature back to the backend for cryptographic verification before marking the booking as completed.
+---
 
-## 🤝 Contributing
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
+## Admin
 
-## 📝 License
-This project is proprietary and confidential. Unauthorized copying of this project, via any medium, is strictly prohibited.
+- Admin Dashboard
+- Manage Categories
+- Manage Providers
+- Manage Customers
+- View All Bookings
+- Platform Statistics
+- User Management
+
+---
+
+## General
+
+- Secure JWT Authentication
+- Role-Based Authorization
+- Responsive UI
+- Modern Tailwind Design
+- RESTful APIs
+- Razorpay Payment Gateway
+- Image Upload Support
+- PostgreSQL Database
+- Production Deployment
+
+---
+
+# Tech Stack
+
+## Frontend
+
+- React 19
+- Vite
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Radix UI
+- Axios
+- React Query
+- React Router
+
+---
+
+## Backend
+
+- Java 17
+- Spring Boot 3.4
+- Spring Security
+- JWT Authentication
+- Spring Data JPA
+- Hibernate
+- Maven
+
+---
+
+## Database
+
+- PostgreSQL (Neon)
+
+---
+
+## Payment
+
+- Razorpay Checkout
+- Server-side Payment Verification
+
+---
+
+## Deployment
+
+Frontend
+
+- Vercel
+
+Backend
+
+- Render
+
+Database
+
+- Neon PostgreSQL
+
+---
+
+# Project Structure
+
+```
+UrbanFix
+
+├── frontend
+│   ├── src
+│   ├── components
+│   ├── pages
+│   ├── hooks
+│   ├── context
+│   └── lib
+│
+├── backend
+│   ├── controller
+│   ├── service
+│   ├── repository
+│   ├── entity
+│   ├── dto
+│   ├── security
+│   ├── config
+│   └── exception
+│
+└── README.md
+```
+
+---
+
+# Authentication Flow
+
+```
+User Login
+
+↓
+
+Spring Security
+
+↓
+
+Authentication Manager
+
+↓
+
+JWT Generation
+
+↓
+
+Frontend Stores Token
+
+↓
+
+Protected APIs
+
+↓
+
+Role Based Authorization
+```
+
+---
+
+# Database
+
+Main Tables
+
+- users
+- user_roles
+- providers
+- service_categories
+- bookings
+- reviews
+- profiles
+
+---
+
+# API Modules
+
+Authentication
+
+```
+POST /api/auth/register
+POST /api/auth/login
+GET  /api/auth/me
+```
+
+Categories
+
+```
+GET /api/categories
+```
+
+Providers
+
+```
+GET /api/providers
+GET /api/providers/{id}
+```
+
+Bookings
+
+```
+POST /api/bookings
+GET /api/bookings
+```
+
+Payments
+
+```
+POST /api/payments/create-order
+POST /api/payments/verify
+```
+
+Reviews
+
+```
+GET /api/reviews
+POST /api/reviews
+```
+
+Admin
+
+```
+/api/admin/**
+```
+
+---
+
+# Local Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/yourusername/urbanfix.git
+
+cd urbanfix
+```
+
+---
+
+## Backend
+
+```bash
+cd backend
+
+mvn clean install
+
+mvn spring-boot:run
+```
+
+Configure:
+
+```
+DATABASE_URL
+
+DATABASE_USERNAME
+
+DATABASE_PASSWORD
+
+JWT_SECRET
+
+RAZORPAY_KEY_ID
+
+RAZORPAY_KEY_SECRET
+```
+
+---
+
+## Frontend
+
+```
+npm install
+
+npm run dev
+```
+
+Environment Variables
+
+```
+VITE_API_URL=http://localhost:8080/api
+
+VITE_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxx
+```
+
+---
+
+# Production Deployment
+
+## Frontend
+
+Vercel
+
+## Backend
+
+Render
+
+## Database
+
+Neon PostgreSQL
+
+---
+
+# Security
+
+- BCrypt Password Hashing
+- JWT Authentication
+- Stateless Sessions
+- Spring Security
+- Role-Based Access Control
+- Protected REST APIs
+- Server-side Razorpay Verification
+
+---
+
+# Future Improvements
+
+- Email Notifications
+- OTP Verification
+- Google Login
+- Provider Availability Calendar
+- Live Booking Tracking
+- AI Service Recommendations
+- Push Notifications
+- Mobile App
+- Analytics Dashboard
+
+---
+
+# Screenshots
+
+Add screenshots here
+
+- Home Page
+- Categories
+- Provider Profile
+- Booking Page
+- Razorpay Checkout
+- Customer Dashboard
+- Provider Dashboard
+- Admin Dashboard
+
+---
+
+# Author
+
+**Alok Gupta**
+
+B.Tech Computer Science & Engineering
+
+NIET Greater Noida
+
+GitHub:
+https://github.com/alokkgupta28
+
+LinkedIn:
+https://linkedin.com/in/alokkgupta28
+
+Portfolio:
+https://alokgupta.dev
+
+---
+
+# License
+
+This project is developed for educational and portfolio purposes.
+
+© 2026 Alok Gupta. All Rights Reserved.
