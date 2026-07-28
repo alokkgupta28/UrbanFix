@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.security.authentication.BadCredentialsException;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -55,7 +55,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiErrorResponse> handleIllegalArg(IllegalArgumentException ex) {
         return build(HttpStatus.BAD_REQUEST, ex.getMessage());
     }
-
+    
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ApiErrorResponse> handleBadCredentials(BadCredentialsException ex) {
+    return build(HttpStatus.UNAUTHORIZED, "Invalid email or password");
+}
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiErrorResponse> handleGeneral(Exception ex) {
         log.error("Unhandled exception", ex);
