@@ -1,293 +1,262 @@
 <div align="center">
 
-<img src="public/favicon.svg" width="120" alt="UrbanFix Logo"/>
+<img src="public/favicon.svg" width="120" alt="UrbanFix Logo">
 
 # UrbanFix
 
 ### Professional Home Service Booking Platform
 
-Book trusted electricians, plumbers, AC technicians, cleaners, carpenters, painters, salon experts and more with secure online payments, real-time booking management and role-based dashboards.
+Book trusted home service professionals including electricians, plumbers, AC technicians, carpenters, painters, cleaners, salon experts and more through a secure, modern and user-friendly platform.
 
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4-6DB33F?logo=springboot&logoColor=white)
-![Java](https://img.shields.io/badge/Java-17-orange?logo=openjdk)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-4169E1?logo=postgresql)
-![JWT](https://img.shields.io/badge/Auth-JWT-black)
-![Razorpay](https://img.shields.io/badge/Payments-Razorpay-02042B?logo=razorpay)
-![Vercel](https://img.shields.io/badge/Frontend-Vercel-black?logo=vercel)
-![Render](https://img.shields.io/badge/Backend-Render-46E3B7?logo=render)
+<p>
+
+<img src="https://img.shields.io/badge/Java-17-orange?logo=openjdk">
+<img src="https://img.shields.io/badge/Spring%20Boot-3.4-6DB33F?logo=springboot">
+<img src="https://img.shields.io/badge/React-19-61DAFB?logo=react">
+<img src="https://img.shields.io/badge/PostgreSQL-Neon-4169E1?logo=postgresql">
+<img src="https://img.shields.io/badge/JWT-Authentication-black">
+<img src="https://img.shields.io/badge/Razorpay-Payments-02042B?logo=razorpay">
+<img src="https://img.shields.io/badge/License-MIT-blue">
+
+</p>
+
+### 🌐 Live Demo
+
+**Frontend:** https://urbanfix-peach.vercel.app/
+
+**Backend API:** https://urbanfix-9il0.onrender.com
 
 </div>
 
 ---
 
-# Live Demo
+# 📖 Overview
 
-### Frontend
+UrbanFix is a full-stack home service booking platform inspired by Urban Company.
 
-https://your-vercel-domain.vercel.app
+The platform connects customers with verified service professionals while providing secure booking, online payments, booking management, reviews, and role-based dashboards.
 
-### Backend API
-
-https://urbanfix-9il0.onrender.com
+The application follows a scalable client-server architecture using React for the frontend and Spring Boot for the backend with JWT authentication and PostgreSQL as the database.
 
 ---
 
-# Overview
+# ✨ Features
 
-UrbanFix is a modern full-stack service marketplace inspired by platforms like Urban Company.
-
-Customers can easily discover trusted professionals, book services, make secure online payments, leave reviews and manage bookings.
-
-Service providers manage bookings through a dedicated provider dashboard, while administrators manage users, providers, bookings and platform content through an admin panel.
-
-The application follows a scalable client-server architecture using Spring Boot REST APIs and a React frontend.
-
----
-
-# Features
-
-## Customer
+## 👤 Customer
 
 - User Registration & Login
 - JWT Authentication
-- Browse Categories
-- Search Services
-- View Provider Profiles
-- Book Services
-- Online Razorpay Payments
+- Browse Service Categories
+- View Professional Profiles
+- Book Home Services
+- Secure Razorpay Payments
 - Booking History
+- Rate & Review Providers
 - Profile Management
-- Reviews & Ratings
 
 ---
 
-## Provider
+## 👨‍🔧 Provider
 
 - Provider Login
 - Provider Dashboard
-- View Assigned Bookings
+- Manage Bookings
 - Update Booking Status
-- Manage Profile
 - View Customer Reviews
+- Profile Management
 
 ---
 
-## Admin
+## 👨‍💼 Admin
 
 - Admin Dashboard
 - Manage Categories
 - Manage Providers
 - Manage Customers
-- View All Bookings
-- Platform Statistics
-- User Management
+- Monitor Bookings
+- Platform Analytics
 
 ---
 
-## General
+## 🔐 Security
 
-- Secure JWT Authentication
-- Role-Based Authorization
-- Responsive UI
-- Modern Tailwind Design
-- RESTful APIs
-- Razorpay Payment Gateway
-- Image Upload Support
-- PostgreSQL Database
-- Production Deployment
-
----
-
-# Tech Stack
-
-## Frontend
-
-- React 19
-- Vite
-- TypeScript
-- Tailwind CSS
-- shadcn/ui
-- Radix UI
-- Axios
-- React Query
-- React Router
-
----
-
-## Backend
-
-- Java 17
-- Spring Boot 3.4
 - Spring Security
 - JWT Authentication
-- Spring Data JPA
-- Hibernate
-- Maven
+- BCrypt Password Encryption
+- Role-Based Authorization
+- Secure REST APIs
+- Razorpay Signature Verification
 
 ---
 
-## Database
+# 🏗️ System Architecture
 
-- PostgreSQL (Neon)
+```mermaid
+flowchart LR
+
+A[React + Vite]
+
+B[Spring Boot REST API]
+
+C[Spring Security]
+
+D[JWT Authentication]
+
+E[Service Layer]
+
+F[Spring Data JPA]
+
+G[(PostgreSQL)]
+
+A --> B
+B --> C
+C --> D
+D --> E
+E --> F
+F --> G
+```
 
 ---
 
-## Payment
+# 🛠 Tech Stack
 
-- Razorpay Checkout
-- Server-side Payment Verification
-
----
-
-## Deployment
-
-Frontend
-
-- Vercel
-
-Backend
-
-- Render
-
-Database
-
-- Neon PostgreSQL
+| Layer | Technology |
+|---------|------------|
+| Frontend | React 19 |
+| UI | Tailwind CSS + shadcn/ui |
+| Backend | Spring Boot 3 |
+| Language | Java 17 |
+| Security | Spring Security |
+| Authentication | JWT |
+| ORM | Hibernate / Spring Data JPA |
+| Database | PostgreSQL (Neon) |
+| Payments | Razorpay |
+| Build Tool | Maven |
+| Deployment | Vercel + Render |
 
 ---
 
-# Project Structure
+# 📂 Project Structure
 
 ```
 UrbanFix
-
+│
 ├── frontend
 │   ├── src
+│   ├── assets
 │   ├── components
-│   ├── pages
-│   ├── hooks
 │   ├── context
-│   └── lib
+│   ├── hooks
+│   ├── pages
+│   ├── services
+│   └── utils
 │
 ├── backend
-│   ├── controller
-│   ├── service
-│   ├── repository
-│   ├── entity
-│   ├── dto
-│   ├── security
 │   ├── config
-│   └── exception
+│   ├── controller
+│   ├── dto
+│   ├── entity
+│   ├── repository
+│   ├── security
+│   ├── service
+│   ├── exception
+│   └── util
 │
 └── README.md
 ```
 
 ---
 
-# Authentication Flow
+# 🔐 Authentication Flow
 
-```
-User Login
+```mermaid
+sequenceDiagram
 
-↓
+Customer->>Frontend: Login
 
-Spring Security
+Frontend->>Backend: Email & Password
 
-↓
+Backend->>Spring Security: Authenticate
 
-Authentication Manager
+Spring Security->>JWT: Generate Token
 
-↓
+JWT-->>Frontend: Access Token
 
-JWT Generation
+Frontend->>Backend: Bearer Token
 
-↓
-
-Frontend Stores Token
-
-↓
-
-Protected APIs
-
-↓
-
-Role Based Authorization
+Backend-->>Frontend: Protected Resources
 ```
 
 ---
 
-# Database
+# 🗄 Database
 
-Main Tables
+### Main Tables
 
 - users
 - user_roles
+- profiles
 - providers
 - service_categories
 - bookings
 - reviews
-- profiles
 
 ---
 
-# API Modules
+# 🔌 REST API
 
-Authentication
+## Authentication
 
-```
-POST /api/auth/register
-POST /api/auth/login
-GET  /api/auth/me
-```
-
-Categories
-
-```
-GET /api/categories
-```
-
-Providers
-
-```
-GET /api/providers
-GET /api/providers/{id}
-```
-
-Bookings
-
-```
-POST /api/bookings
-GET /api/bookings
-```
-
-Payments
-
-```
-POST /api/payments/create-order
-POST /api/payments/verify
-```
-
-Reviews
-
-```
-GET /api/reviews
-POST /api/reviews
-```
-
-Admin
-
-```
-/api/admin/**
-```
+| Method | Endpoint |
+|----------|-----------|
+| POST | /api/auth/register |
+| POST | /api/auth/login |
+| GET | /api/auth/me |
 
 ---
 
-# Local Installation
+## Categories
+
+| Method | Endpoint |
+|----------|-----------|
+| GET | /api/categories |
+
+---
+
+## Providers
+
+| Method | Endpoint |
+|----------|-----------|
+| GET | /api/providers |
+| GET | /api/providers/{id} |
+
+---
+
+## Bookings
+
+| Method | Endpoint |
+|----------|-----------|
+| POST | /api/bookings |
+| GET | /api/bookings |
+| PUT | /api/bookings/{id} |
+
+---
+
+## Payments
+
+| Method | Endpoint |
+|----------|-----------|
+| POST | /api/payments/create-order |
+| POST | /api/payments/verify |
+
+---
+
+# 🚀 Local Installation
 
 ## Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/urbanfix.git
+git clone https://github.com/alokkgupta28/urbanfix.git
 
 cd urbanfix
 ```
@@ -304,7 +273,7 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-Configure:
+### Backend Environment Variables
 
 ```
 DATABASE_URL
@@ -324,13 +293,13 @@ RAZORPAY_KEY_SECRET
 
 ## Frontend
 
-```
+```bash
 npm install
 
 npm run dev
 ```
 
-Environment Variables
+### Frontend Environment Variables
 
 ```
 VITE_API_URL=http://localhost:8080/api
@@ -340,84 +309,139 @@ VITE_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxx
 
 ---
 
-# Production Deployment
+# 🌍 Deployment
 
-## Frontend
-
-Vercel
-
-## Backend
-
-Render
-
-## Database
-
-Neon PostgreSQL
+| Service | Platform |
+|----------|----------|
+| Frontend | Vercel |
+| Backend | Render |
+| Database | Neon PostgreSQL |
+| Payments | Razorpay |
 
 ---
 
-# Security
+# 📷 Screenshots
 
-- BCrypt Password Hashing
+## Home Page
+
+> Add screenshot here
+
+---
+
+## Categories
+
+> Add screenshot here
+
+---
+
+## Provider Details
+
+> Add screenshot here
+
+---
+
+## Booking
+
+> Add screenshot here
+
+---
+
+## Customer Dashboard
+
+> Add screenshot here
+
+---
+
+## Provider Dashboard
+
+> Add screenshot here
+
+---
+
+## Admin Dashboard
+
+> Add screenshot here
+
+---
+
+# 🔒 Security Features
+
 - JWT Authentication
-- Stateless Sessions
+- BCrypt Password Hashing
 - Spring Security
-- Role-Based Access Control
+- Stateless Authentication
+- Role-Based Authorization
 - Protected REST APIs
-- Server-side Razorpay Verification
+- Secure Payment Verification
+- Exception Handling
+- Input Validation
 
 ---
 
-# Future Improvements
+# 🚀 Performance
 
-- Email Notifications
-- OTP Verification
-- Google Login
-- Provider Availability Calendar
+- Responsive Design
+- Optimized REST APIs
+- Fast Page Loading
+- React Query Caching
+- Lazy Loading
+- Stateless Authentication
+
+---
+
+# 🔮 Future Enhancements
+
+- Google Authentication
+- Email Verification
+- OTP Login
 - Live Booking Tracking
-- AI Service Recommendations
 - Push Notifications
-- Mobile App
-- Analytics Dashboard
+- AI Service Recommendation
+- Chat Support
+- Mobile Application
 
 ---
 
-# Screenshots
+# 👨‍💻 Author
 
-Add screenshots here
+## Alok Kumar Gupta
 
-- Home Page
-- Categories
-- Provider Profile
-- Booking Page
-- Razorpay Checkout
-- Customer Dashboard
-- Provider Dashboard
-- Admin Dashboard
+**B.Tech Computer Science & Engineering**
 
----
+Noida Institute of Engineering & Technology
 
-# Author
+**Portfolio**
 
-**Alok Gupta**
-
-B.Tech Computer Science & Engineering
-
-NIET Greater Noida
-
-GitHub:
-https://github.com/alokkgupta28
-
-LinkedIn:
-https://linkedin.com/in/alokkgupta28
-
-Portfolio:
 https://alokgupta.dev
 
+**LinkedIn**
+
+https://linkedin.com/in/alokkgupta28
+
+**GitHub**
+
+https://github.com/alokkgupta28
+
 ---
 
-# License
+# ⭐ Support
 
-This project is developed for educational and portfolio purposes.
+If you found this project helpful, please consider giving it a **⭐ Star** on GitHub.
 
-© 2026 Alok Gupta. All Rights Reserved.
+It helps the project gain visibility and motivates further improvements.
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
+
+Feel free to use it for learning and educational purposes.
+
+---
+
+<div align="center">
+
+Made with ❤️ by **Alok Kumar Gupta**
+
+</div>
