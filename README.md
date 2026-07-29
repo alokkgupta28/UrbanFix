@@ -324,7 +324,7 @@ VITE_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxx
 
 ## Home Page
 
-> Add screenshot here
+![Home Page](src/assets/home.png)
 
 ---
 
