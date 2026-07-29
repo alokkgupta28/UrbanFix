@@ -330,37 +330,37 @@ VITE_RAZORPAY_KEY_ID=rzp_test_xxxxxxxxx
 
 ## Categories
 
-> Add screenshot here
+![Categories](src/assets/categories.png)
 
 ---
 
 ## Provider Details
 
-> Add screenshot here
+![Provider Details](src/assets/provider-details.png)
 
 ---
 
 ## Booking
 
-> Add screenshot here
+![Booking](src/assets/booking.png)
 
 ---
 
 ## Customer Dashboard
 
-> Add screenshot here
+![Customer Dashboard](src/assets/customer-dashboard.png)
 
 ---
 
 ## Provider Dashboard
 
-> Add screenshot here
+![Provider Dashboard](src/assets/provider-dashboard.png)
 
 ---
 
 ## Admin Dashboard
 
-> Add screenshot here
+![Admin Dashboard](src/assets/admin-dashboard.png)
 
 ---
 
