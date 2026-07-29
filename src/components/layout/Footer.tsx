@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 export function Footer() {
   return (
-    <footer className="mt-24 bg-secondary text-secondary-foreground">
+    <footer className="bg-secondary text-secondary-foreground">
       <div className="container-page py-20">
         <div className="grid gap-14 md:grid-cols-12">
           <div className="md:col-span-5">
