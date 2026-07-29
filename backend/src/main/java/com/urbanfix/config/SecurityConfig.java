@@ -33,21 +33,34 @@ public class SecurityConfig {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors -> cors.configure(http))
-            .authorizeHttpRequests(auth -> auth
-                // Public endpoints
-                .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/categories/**").permitAll()
-                .requestMatchers("/api/providers/**").permitAll() // we might restrict some in controller
-                .requestMatchers("/api/reviews/**").permitAll()
-                .requestMatchers("/uploads/**").permitAll() // allow static file access
-                
-                // Admin endpoints (example, can be secured here or with @PreAuthorize)
-                .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                
-                // All other API endpoints require authentication
-                .requestMatchers("/api/**").authenticated()
-                .anyRequest().permitAll()
-            )
+            
+.authorizeHttpRequests(auth -> auth
+
+    // Public endpoints
+    .requestMatchers(
+        "/api/auth/**",
+        "/api/health",
+        "/api/categories/**",
+        "/api/providers/**",
+        "/api/reviews/**",
+        "/uploads/**"
+    ).permitAll()
+
+    // Swagger (for future)
+    .requestMatchers(
+        "/swagger-ui/**",
+        "/v3/api-docs/**",
+        "/swagger-ui.html"
+    ).permitAll()
+
+    // Admin
+    .requestMatchers("/api/admin/**").hasRole("ADMIN")
+
+    // Protected APIs
+    .requestMatchers("/api/**").authenticated()
+
+    .anyRequest().permitAll()
+)
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
