@@ -12,7 +12,7 @@ export function SplashScreen() {
     if (!showSplash) return;
 
     let isMounted = true;
-    const MIN_DURATION = 1500;
+    const MIN_DURATION = 2000;
     const startTime = Date.now();
 
     const checkReady = async () => {
