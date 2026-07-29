@@ -32,7 +32,7 @@ Book trusted home service professionals including electricians, plumbers, AC tec
 
 # 📖 Overview
 
-UrbanFix is a full-stack home service booking platform inspired by Urban Company.
+UrbanFix is a full-stack home service booking platform.
 
 The platform connects customers with verified service professionals while providing secure booking, online payments, booking management, reviews, and role-based dashboards.
 
