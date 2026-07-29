@@ -12,7 +12,7 @@ export function SplashScreen() {
     if (!showSplash) return;
 
     let isMounted = true;
-    const MIN_DURATION = 2500;
+    const MIN_DURATION = 1500;
     const startTime = Date.now();
 
     const checkReady = async () => {
@@ -55,7 +55,7 @@ export function SplashScreen() {
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center"
           style={{ backgroundColor: "#F7F2E9" }}
         >
