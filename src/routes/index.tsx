@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import {
@@ -23,13 +23,9 @@ export const Route = createFileRoute("/")({
       { rel: "preload", as: "image", href: heroEditorialImage, fetchPriority: "high" } as unknown as { rel: string },
     ],
   }),
-  loader: async ({ context }) => {
-    await Promise.all([
-      context.queryClient.ensureQueryData(categoriesQuery),
-      context.queryClient.ensureQueryData(providersQuery),
-      context.queryClient.ensureQueryData(reviewsQuery),
-    ]);
-  },
+loader: async ({ context }) => {
+  await context.queryClient.ensureQueryData(categoriesQuery);
+},
   component: Landing,
 });
 
@@ -74,8 +70,15 @@ function SectionLabel({ index, children }: { index: string; children: React.Reac
 
 function Landing() {
   const cats = useSuspenseQuery(categoriesQuery).data;
-  const technicians = useSuspenseQuery(providersQuery).data;
-  const revs = useSuspenseQuery(reviewsQuery).data;
+  const {
+  data: technicians = [],
+  isLoading: providersLoading,
+} = useQuery(providersQuery);
+
+const {
+  data: revs = [],
+  isLoading: reviewsLoading,
+} = useQuery(reviewsQuery);
   const navigate = useNavigate();
   const [q, setQ] = useState("");
   const [previewPro, setPreviewPro] = useState<Provider | null>(null);
