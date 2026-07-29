@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { Loader2, Mail, Lock, ArrowRight, Sparkle } from "lucide-react";
+import { Loader2, Mail, Lock, ArrowRight, Sparkle, Eye, EyeOff } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -94,6 +94,7 @@ function AuthPage() {
 
 function SignInForm({ redirectTo }: { redirectTo?: string }) {
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
     defaultValues: { email: "", password: "" },
@@ -128,7 +129,21 @@ function SignInForm({ redirectTo }: { redirectTo?: string }) {
           <label className="text-sm font-medium">Password</label>
           <div className="relative mt-1.5">
             <Lock className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input {...form.register("password")} type="password" placeholder="••••••••" className="pl-9" />
+            <Input
+              {...form.register("password")}
+              type={showPassword ? "text" : "password"}
+              placeholder="••••••••"
+              className="pl-9 pr-9"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((v) => !v)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              tabIndex={-1}
+            >
+              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
           </div>
           {form.formState.errors.password && <p className="mt-1 text-xs text-destructive">{form.formState.errors.password.message}</p>}
         </div>
@@ -142,6 +157,7 @@ function SignInForm({ redirectTo }: { redirectTo?: string }) {
 
 function SignUpForm({ redirectTo }: { redirectTo?: string }) {
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: { email: "", password: "", fullName: "" },
@@ -176,7 +192,23 @@ function SignUpForm({ redirectTo }: { redirectTo?: string }) {
         </div>
         <div>
           <label className="text-sm font-medium">Password</label>
-          <Input {...form.register("password")} type="password" placeholder="At least 6 characters" className="mt-1.5" />
+          <div className="relative mt-1.5">
+            <Input
+              {...form.register("password")}
+              type={showPassword ? "text" : "password"}
+              placeholder="At least 6 characters"
+              className="pr-9"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((v) => !v)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              tabIndex={-1}
+            >
+              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
           {form.formState.errors.password && <p className="mt-1 text-xs text-destructive">{form.formState.errors.password.message}</p>}
         </div>
         <Button type="submit" className="w-full rounded-xl" disabled={loading}>
@@ -185,5 +217,4 @@ function SignUpForm({ redirectTo }: { redirectTo?: string }) {
       </form>
     </div>
   );
-}
-
+                }
