@@ -161,8 +161,8 @@ function Landing() {
                 <img
                   src={heroEditorialImage}
                   alt="An UrbanFix technician attending to a wall socket in a warm modern Indian living room"
-                  width={1024}
-                  height={1280}
+                  width={720}
+                  height={900}
                   loading="eager"
                   decoding="async"
                   {...({ fetchpriority: "high" } as Record<string, string>)}
