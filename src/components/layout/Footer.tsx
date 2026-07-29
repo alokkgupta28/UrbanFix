@@ -58,7 +58,6 @@ export function Footer() {
       <div className="border-t border-secondary-foreground/10">
         <div className="container-page flex flex-col items-start justify-between gap-3 py-6 text-[10px] font-semibold uppercase tracking-[0.28em] text-secondary-foreground/40 sm:flex-row sm:items-center">
           <p>© {new Date().getFullYear()} UrbanFix Technologies</p>
-          <p>Bengaluru · Mumbai · Delhi · Pune · Hyderabad</p>
         </div>
       </div>
     </footer>
